@@ -1,0 +1,48 @@
+.needhelp-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;        /* ✅ move to right */
+  z-index: 1200;
+}
+
+.needhelp-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.needhelp-card:hover {
+  transform: translateY(-4px);
+}
+
+.needhelp-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.needhelp-card h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.needhelp-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}

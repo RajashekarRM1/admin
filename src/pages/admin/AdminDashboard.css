@@ -1,0 +1,217 @@
+/* ===================== PAGE WRAPPER ===================== */
+.dashboard-wrapper {
+  width: 100%;
+  background: #f8fafc;
+}
+
+/* ===================== CONTAINER ===================== */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+}
+
+/* ===================== BREADCRUMB ===================== */
+.breadcrumb {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.breadcrumb span {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* ===================== HEADINGS ===================== */
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-top: 12px;
+  color: #0f172a;
+}
+
+h2 {
+  margin-top: 36px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* ===================== STATS ===================== */
+.stats {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background: white;
+  margin-top: 14px;
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h2 {
+  font-size: 44px;
+  margin: 10px 0;
+}
+
+.stat {
+  display: inline-block;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.stat.green { background: #dcfce7; color: #166534; }
+.stat.blue { background: #e0e7ff; color: #1e40af; }
+.stat.orange { background: #ffedd5; color: #9a3412; }
+
+/* ===================== ICONS ===================== */
+.icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+}
+
+.blue { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+.green { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.orange { background: linear-gradient(135deg, #f97316, #fb923c); }
+
+/* ===================== STEPS ===================== */
+.steps {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.line {
+  width: 80px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.step-text {
+  margin-left: auto;
+  font-weight: 600;
+  color: #475569;
+}
+button{
+  margin-right: 3px;
+}
+
+/* ===================== UPLOAD ===================== */
+.upload-box {
+  margin-top: 32px;
+  padding: 70px;
+  text-align: center;
+  border-radius: 26px;
+
+  background: #eef2ff;
+  border: 2px dashed #a5b4fc;
+  cursor: pointer;
+}
+
+.upload-box h3 {
+  font-size: 22px;
+  margin-top: 18px;
+}
+
+.upload-box button {
+  margin-top: 26px;
+  padding: 14px 34px;
+  border-radius: 14px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  font-weight: 700;
+}
+
+/* ===================== FILE PREVIEW ===================== */
+.file-preview {
+  margin-top: 28px;
+  background: white;
+  padding: 20px 24px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-left {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.remove {
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ===================== ACTIONS ===================== */
+.actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.outline {
+  border: 2px solid #4f46e5;
+  background: white;
+  color: #4f46e5;
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.primary {
+  background: #4f46e5;
+  color: white;
+  padding: 14px 34px;
+  border-radius: 14px;
+  font-weight: 700;
+  border: none;
+}

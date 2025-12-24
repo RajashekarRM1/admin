@@ -1,0 +1,5 @@
+.app-content {
+  padding-top: 160px; /* MUST match navbar height */
+  min-height: 100vh;
+  background: #f8fafc;
+}
