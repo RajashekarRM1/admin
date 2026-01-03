@@ -1,129 +1,169 @@
+import { useState } from "react";
 import "./TeamLeadDashboard.css";
 
-const TeamLeadDashboard = () => {
+type Lead = {
+  name: string;
+  date: string;
+  phone: string;
+  email: string;
+  course: string;
+  status: "New" | "Contacted" | "Qualified" | "Converted";
+  counselor: string;
+  source: string;
+};
+
+const leadsData: Lead[] = [
+  {
+    name: "Amit Kumar",
+    date: "Jan 15, 2024",
+    phone: "+91 9876543210",
+    email: "amit@email.com",
+    course: "MBA",
+    status: "Qualified",
+    counselor: "John Doe",
+    source: "Website",
+  },
+  {
+    name: "Priya Sharma",
+    date: "Jan 16, 2024",
+    phone: "+91 9876543211",
+    email: "priya@email.com",
+    course: "BBA",
+    status: "New",
+    counselor: "Jane Smith",
+    source: "Facebook",
+  },
+  {
+    name: "Rahul Verma",
+    date: "Jan 17, 2024",
+    phone: "+91 9876543212",
+    email: "rahul@email.com",
+    course: "B.Tech",
+    status: "Contacted",
+    counselor: "John Doe",
+    source: "Instagram",
+  },
+];
+
+const Leads = () => {
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("All");
+  const [counselor, setCounselor] = useState("All");
+
+  const filteredLeads = leadsData.filter((lead) => {
+    const matchSearch =
+      lead.name.toLowerCase().includes(search.toLowerCase()) ||
+      lead.email.toLowerCase().includes(search.toLowerCase()) ||
+      lead.phone.includes(search);
+
+    const matchStatus = status === "All" || lead.status === status;
+    const matchCounselor = counselor === "All" || lead.counselor === counselor;
+
+    return matchSearch && matchStatus && matchCounselor;
+  });
+
   return (
-    <section className="dashboard-wrapper">
-      <div className="dashboard-container">
-
-        {/* Breadcrumb */}
-        <div className="breadcrumb">
-          🏠 <span>Team Lead</span> / <b>Team Overview</b>
+    <div className="leads-page">
+      {/* FILTERS */}
+      <div className="leads-filters">
+        <div className="search-box">
+          <span>🔍</span>
+          <input
+            placeholder="Search leads..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
 
-        {/* Header */}
-        <h1>Team Overview</h1>
-        <p className="subtitle">
-          Monitor team performance and call outcomes
-        </p>
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option value="All">All Status</option>
+          <option value="New">New</option>
+          <option value="Contacted">Contacted</option>
+          <option value="Qualified">Qualified</option>
+          <option value="Converted">Converted</option>
+        </select>
 
-        {/* STATS */}
-        <div className="stats">
-          <div className="card">
-            <div>
-              <p>Total Calls</p>
-              <h2>1,847</h2>
-            </div>
-            <div className="icon blue">📞</div>
-          </div>
+        <select
+          value={counselor}
+          onChange={(e) => setCounselor(e.target.value)}
+        >
+          <option value="All">All Counselors</option>
+          <option value="John Doe">John Doe</option>
+          <option value="Jane Smith">Jane Smith</option>
+        </select>
 
-          <div className="card">
-            <div>
-              <p>Positive Responses</p>
-              <h2 className="green-text">542</h2>
-            </div>
-            <div className="icon green">👍</div>
-          </div>
+        <input type="date" />
 
-          <div className="card">
-            <div>
-              <p>Negative Responses</p>
-              <h2 className="red-text">823</h2>
-            </div>
-            <div className="icon red">👎</div>
-          </div>
-
-          <div className="card">
-            <div>
-              <p>Callbacks</p>
-              <h2 className="orange-text">482</h2>
-            </div>
-            <div className="icon orange">🔁</div>
-          </div>
-        </div>
-
-        {/* CHARTS */}
-        <div className="charts">
-          <div className="chart-card">
-            <h3>Call Outcomes Distribution</h3>
-            <div className="chart-placeholder">📊 Donut Chart</div>
-          </div>
-
-          <div className="chart-card">
-            <h3>Employee Performance</h3>
-            <div className="chart-placeholder">📈 Bar Chart</div>
-          </div>
-        </div>
-
-        {/* TABLE */}
-        <div className="table-card">
-          <h3>Employee Performance Breakdown</h3>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Employee</th>
-                <th>Assigned</th>
-                <th>Called</th>
-                <th className="green-text">Positive</th>
-                <th className="red-text">Negative</th>
-                <th className="orange-text">Callback</th>
-                <th>Completion</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Rajesh Kumar</td>
-                <td>63</td>
-                <td>58</td>
-                <td className="green-text">22</td>
-                <td className="red-text">28</td>
-                <td className="orange-text">8</td>
-                <td>
-                  <div className="progress">
-                    <div style={{ width: "92%" }} />
-                  </div>
-                  92%
-                </td>
-              </tr>
-
-              <tr>
-                <td>Priya Sharma</td>
-                <td>63</td>
-                <td>61</td>
-                <td className="green-text">25</td>
-                <td className="red-text">30</td>
-                <td className="orange-text">6</td>
-                <td>
-                  <div className="progress">
-                    <div style={{ width: "97%" }} />
-                  </div>
-                  97%
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* ACTIONS */}
-        <div className="actions">
-          <button className="primary">📄 Generate EOD Report</button>
-          <button className="success">⬇ Export Positive Leads</button>
-        </div>
-
+        <button className="primary-btn">+ Add Lead</button>
       </div>
-    </section>
+
+      {/* TABLE */}
+      <div className="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>LEAD NAME</th>
+              <th>CONTACT</th>
+              <th>COURSE</th>
+              <th>STATUS</th>
+              <th>COUNSELOR</th>
+              <th>SOURCE</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredLeads.map((lead, i) => (
+              <tr key={i}>
+                <td>
+                  <div className="lead-name">
+                    <div className="avatar">{lead.name[0]}</div>
+                    <div>
+                      <strong>{lead.name}</strong>
+                      <span>{lead.date}</span>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <div className="contact">
+                    <span>{lead.phone}</span>
+                    <small>{lead.email}</small>
+                  </div>
+                </td>
+
+                <td>{lead.course}</td>
+
+                <td>
+                  <span className={`badge ${lead.status.toLowerCase()}`}>
+                    {lead.status}
+                  </span>
+                </td>
+
+                <td>{lead.counselor}</td>
+                <td>{lead.source}</td>
+
+                <td className="actions">👁️ ✏️ ➕</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* PAGINATION */}
+        <div className="pagination">
+          <span>Showing 1 to {filteredLeads.length} leads</span>
+
+          <div className="pages">
+            <button>Previous</button>
+            <button className="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default TeamLeadDashboard;
+export default Leads;

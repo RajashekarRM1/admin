@@ -1,0 +1,108 @@
+/* ===== PAGE ===== */
+.auth-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ===== CARD ===== */
+.auth-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== TITLES ===== */
+.auth-card h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.auth-subtitle {
+  margin: 6px 0 24px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ===== FORM ===== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* INPUTS */
+.auth-form input {
+  width: 100%;                 /* 🔥 prevents overflow */
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.auth-form input:focus {
+  border-color: #2563eb;
+}
+
+/* ===== FIRST + LAST NAME ROW ===== */
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row input {
+  flex: 1;                     /* 🔥 equal width */
+  min-width: 0;                /* 🔥 critical fix */
+}
+
+/* ===== BUTTON ===== */
+.auth-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background: #1e4fd8;
+}
+
+/* ===== TOGGLE ===== */
+.toggle-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #475569;
+  text-align: center;
+}
+
+.toggle-text span {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
